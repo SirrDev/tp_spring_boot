@@ -4,6 +4,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+
+//@SpringBootApplication
+//C’est une annotation spéciale qui combine 3 annotations :
+//@Configuration → indique que la classe contient des beans
+//@ComponentScan → Spring va scanner les composants dans le package
+//@EnableAutoConfiguration → Spring configure automatiquement l’application
 @SpringBootApplication
 public class DemoApplication {
 
