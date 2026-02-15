@@ -30,7 +30,7 @@ public class DemoApplication {
 	//Il stocke l’objet retourné dans le contexte
 	//Il le rend disponible pour injection
 	//👉 Ici, Spring crée une instance de MyFirstClass
-	@Bean
+	//@Bean
 	public MyFirstClass myFirstClass() {
 		return new MyFirstClass();
 	}
