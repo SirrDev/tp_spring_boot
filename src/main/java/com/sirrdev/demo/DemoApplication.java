@@ -19,7 +19,7 @@ public class DemoApplication {
 		var ctx = SpringApplication.run(DemoApplication.class, args);
 
 		//On demande au contexte Spring :
-		//"Donne-moi le bean de type MyFirstClass" getBean(...) → récupère un bean
+		//"Donne-moi le bean de type  MyFirstClass" getBean(...) → récupère un bean
 		MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
 		System.out.println(myFirstService.tellAStory());
 	}
