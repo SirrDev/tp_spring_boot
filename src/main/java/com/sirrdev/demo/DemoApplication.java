@@ -20,7 +20,7 @@ public class DemoApplication {
 
 		//On demande au contexte Spring :
 		//"Donne-moi le bean de type MyFirstClass" getBean(...) → récupère un bean
-		MyFirstClass myFirstClass = ctx.getBean(com.sirrdev.demo.MyFirstClass.class);
+		MyFirstClass myFirstClass = ctx.getBean("myBean",MyFirstClass.class);
 		System.out.println(myFirstClass.sayHello());
 	}
 
