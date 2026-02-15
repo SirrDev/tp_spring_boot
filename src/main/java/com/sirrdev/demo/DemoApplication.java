@@ -20,8 +20,8 @@ public class DemoApplication {
 
 		//On demande au contexte Spring :
 		//"Donne-moi le bean de type MyFirstClass" getBean(...) → récupère un bean
-		MyFirstClass myFirstClass = ctx.getBean("myBean",MyFirstClass.class);
-		System.out.println(myFirstClass.sayHello());
+		MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
+		System.out.println(myFirstService.tellAStory());
 	}
 
 }
