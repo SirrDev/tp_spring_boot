@@ -24,15 +24,4 @@ public class DemoApplication {
 		System.out.println(myFirstClass.sayHello());
 	}
 
-	//@Bean indique à Spring :
-	//"La méthode suivante retourne un objet que tu dois gérer comme un bean"
-	//Spring appelle cette méthode au démarrage
-	//Il stocke l’objet retourné dans le contexte
-	//Il le rend disponible pour injection
-	//👉 Ici, Spring crée une instance de MyFirstClass
-	//@Bean
-	public MyFirstClass myFirstClass() {
-		return new MyFirstClass();
-	}
-
 }
