@@ -12,7 +12,7 @@ public class MyFirstService {
 
 
     public MyFirstService(
-            @Qualifier("bean2") MyFirstClass myFirstClass
+           MyFirstClass myFirstClass
     ) {
         this.myFirstClass = myFirstClass;
     }
