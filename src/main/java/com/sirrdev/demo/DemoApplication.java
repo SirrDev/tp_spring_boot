@@ -22,6 +22,7 @@ public class DemoApplication {
 		//"Donne-moi le bean de type  MyFirstClass" getBean(...) → récupère un bean
 		MyFirstService myFirstService = ctx.getBean(MyFirstService.class);
 		System.out.println(myFirstService.tellAStory());
+		System.out.println(myFirstService.getJavaVersion());
 	}
 
 }
