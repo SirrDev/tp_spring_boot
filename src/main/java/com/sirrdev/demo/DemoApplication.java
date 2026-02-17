@@ -4,6 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Collections;
+
 
 //@SpringBootApplication
 //C’est une annotation spéciale qui combine 3 annotations :
@@ -14,9 +16,9 @@ import org.springframework.context.annotation.Bean;
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		//ctx est le conteneur IoC
-		//Il contient tous les beans créés par Spring
-		var ctx = SpringApplication.run(DemoApplication.class, args);
+		var app = new SpringApplication(DemoApplication.class);
+		app.setDefaultProperties(Collections.singletonMap("spring.profiles.active", "dev"));
+		var ctx = app.run(args);
 
 		//On demande au contexte Spring :
 		//"Donne-moi le bean de type  MyFirstClass" getBean(...) → récupère un bean
