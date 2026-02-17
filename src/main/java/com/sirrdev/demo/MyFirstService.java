@@ -2,21 +2,26 @@ package com.sirrdev.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 @Service
+@PropertySource("classpath:custom.properties")
 public class MyFirstService {
 
-    private MyFirstClass myFirstClass;
+    private final MyFirstClass myFirstClass;
+    @Value("${my.custom.property}")
+    private String customPropery;
+    @Value("${my.prop}")
+    private String customPropertyFromAnotherFile;
+    @Value("123")
+    private Integer customPropertyInt;
 
-    private Environment environment;
-
-    //setter injection, similar to the method injection
-    @Autowired
-    private void setMyFirstClass(
-            @Qualifier("bean1") MyFirstClass myFirstClass
-    ) {
+    public MyFirstService(
+        @Qualifier("bean1") MyFirstClass myFirstClass
+    ){
         this.myFirstClass = myFirstClass;
     }
 
@@ -25,23 +30,16 @@ public class MyFirstService {
         return  "the bean is saying : " + myFirstClass.sayHello();
     }
 
-    public String getJavaVersion() {
-        //utilisation du bean ou de l'objet
-        return  environment.getProperty("java.version" );
+    public String getCustomPropertyFromAnotherFile() {
+        return customPropertyFromAnotherFile;
     }
 
-    public String getOSName() {
-        //utilisation du bean ou de l'objet
-        return  environment.getProperty("os.name" );
+    public Integer getCustomPropertyInt() {
+        return customPropertyInt;
     }
 
-    public String readProp() {
-        //utilisation du bean ou de l'objet
-        return  environment.getProperty("my.custom.property" );
-    }
-
-    @Autowired
-    public void setEnvironment(Environment environment) {
-        this.environment = environment;
+    public String getCustomPropery() {
+        return customPropery;
     }
 }
+
