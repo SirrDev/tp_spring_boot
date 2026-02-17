@@ -1,6 +1,7 @@
 package com.sirrdev.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -10,12 +11,9 @@ public class MyFirstService {
     private final MyFirstClass myFirstClass;
 
 
-    //"Injecte automatiquement les dépendances nécessaires à ce constructeur."
-    //⚠ Important
-    //Depuis Spring 4.3+, si ta classe n’a qu’un seul constructeur,
-    //@Autowired n’est même plus obligatoire.
-    @Autowired
-    public MyFirstService(MyFirstClass myFirstClass) {
+    public MyFirstService(
+            @Qualifier("bean2") MyFirstClass myFirstClass
+    ) {
         this.myFirstClass = myFirstClass;
     }
 
