@@ -26,4 +26,12 @@ public class FirstController {
     ) {
         return "Request accespted and order is : " + order.toString();
     }
+
+    @PostMapping("/post-order-record")
+    public String postRecord(
+            //to map the body of the request with the method parameter
+            @RequestBody OrderRecord order
+    ) {
+        return "Request accespted and order is : " + order.toString();
+    }
 }
