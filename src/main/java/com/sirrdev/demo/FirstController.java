@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class FirstController {
     //Creating an endpoint
-    @GetMapping("/hello")
+    //@GetMapping("/hello")
     public String sayHello() {
         return "Hello brother sirrrdev! from my first controller";
     }
@@ -35,10 +35,20 @@ public class FirstController {
         return "Request accespted and order is : " + order.toString();
     }
 
-    @GetMapping("/hello/{user-name}")
+    //http://localhost:8080/hello/sirrdev
+    //@GetMapping("/hello/{user-name}")
     public String pathVar(
             @PathVariable("user-name") String userName
     ) {
         return "my value = " + userName;
+    }
+
+    //http://localhost:8080/hello?param_name=paramvalue&param_name_2=valu_2
+    @GetMapping("/hello")
+    public String paramVar(
+            @RequestParam("user-name") String userName,
+            @RequestParam("user-lastname") String userLastName
+    ) {
+        return "my value = " + userName + " " + userLastName;
     }
 }
