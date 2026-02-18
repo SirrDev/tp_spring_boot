@@ -1,8 +1,15 @@
 package com.sirrdev.demo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Order {
+    //personalising and mapping the properties customerName, productName and Quantity
+    @JsonProperty("c-name")
     private String customerName;
+    @JsonProperty("p-name")
     private String productName;
+    @JsonProperty("c-name")
+    private int quantity;
 
     public String getCustomerName() {
         return customerName;
@@ -28,7 +35,6 @@ public class Order {
         this.quantity = quantity;
     }
 
-    private int quantity;
 
     @Override
     public String toString() {
