@@ -20,6 +20,14 @@ public class Student {
     private String email;
     private int age;
 
+    public StudentProfile getStudentProfile() {
+        return studentProfile;
+    }
+
+    public void setStudentProfile(StudentProfile studentProfile) {
+        this.studentProfile = studentProfile;
+    }
+
     @OneToOne(
             //this field student is created in the StudentProfile
             mappedBy = "student",
@@ -27,6 +35,18 @@ public class Student {
             cascade = CascadeType.ALL
     )
     private StudentProfile studentProfile;
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "school_id")
+    private School school;
 
     //this default constructor with no agrs is needed to transform this java class into an entity
     public Student() {
