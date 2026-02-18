@@ -2,8 +2,10 @@ package com.sirrdev.demo;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "T_STUDENT")
 public class Student {
     //used to define the primary key wich is needed to define
     @Id
