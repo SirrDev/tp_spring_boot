@@ -20,6 +20,14 @@ public class Student {
     private String email;
     private int age;
 
+    @OneToOne(
+            //this field student is created in the StudentProfile
+            mappedBy = "student",
+            //when a student is deleted, his profile is also delete as well
+            cascade = CascadeType.ALL
+    )
+    private StudentProfile studentProfile;
+
     //this default constructor with no agrs is needed to transform this java class into an entity
     public Student() {
     }

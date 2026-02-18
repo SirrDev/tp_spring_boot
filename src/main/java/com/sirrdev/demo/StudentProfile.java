@@ -1,8 +1,6 @@
 package com.sirrdev.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class StudentProfile {
@@ -10,6 +8,18 @@ public class StudentProfile {
     @GeneratedValue
     private Integer id;
     private String bio;
+
+    @OneToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public StudentProfile() {
     }
