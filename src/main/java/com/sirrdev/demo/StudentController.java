@@ -16,12 +16,23 @@ public class StudentController {
     }
 
     @PostMapping("/students")
-    public Student post (
+    public StudentResponseDto post (
             //for the dto setting
             @RequestBody StudentDto dto
     ) {
         var student = toStudent(dto);
-        return repository.save(student);
+       var savedStudent = repository.save(student);
+       //the return itself : the object being converted
+       return toStudentResponseDto(savedStudent);
+    }
+
+    //convert the student object to get the new final version wich is gonna be returned
+    private StudentResponseDto toStudentResponseDto(Student student) {
+        return new StudentResponseDto(
+                student.getFirstName(),
+                student.getLastName(),
+                student.getEmail()
+        );
     }
 
     //Transforming StudentDto object above into Student object using the following method
