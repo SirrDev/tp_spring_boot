@@ -12,6 +12,14 @@ public class School {
     private Integer id;
     private String name;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @OneToMany(
             mappedBy = "school"
     )

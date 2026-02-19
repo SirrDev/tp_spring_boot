@@ -17,10 +17,26 @@ public class StudentController {
 
     @PostMapping("/students")
     public Student post (
-            @RequestBody Student student
+            //for the dto setting
+            @RequestBody StudentDto dto
     ) {
-        //persisting the student
+        var student = toStudent(dto);
         return repository.save(student);
+    }
+
+    //Transforming StudentDto object above into Student object using the following method
+    private Student toStudent(StudentDto dto) {
+        var student = new Student();
+        student.setFirstName(dto.firstName());
+        student.setLastName(dto.lastName());
+        student.setEmail(dto.email());
+
+        var school = new School();
+        school.setId(dto.schoolId());
+
+        student.setSchool((school));
+
+        return student;
     }
 
     @GetMapping("/students")
