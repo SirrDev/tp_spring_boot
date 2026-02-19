@@ -16,10 +16,16 @@ public class SchoolController {
     }
 
     @PostMapping("/schools")
-    public School createSchool(
-            @RequestBody School school
+    public SchoolDto create(
+            @RequestBody SchoolDto dto
     ) {
-        return schoolRepository.save(school);
+        var school = toSchool(dto);
+        schoolRepository.save(school);
+        return dto;
+    }
+
+    private School toSchool(SchoolDto dto) {
+        return new School(dto.name());
     }
 
     @GetMapping("/schools")
