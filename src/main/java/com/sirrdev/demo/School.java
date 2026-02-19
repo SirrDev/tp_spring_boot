@@ -1,5 +1,6 @@
 package com.sirrdev.demo;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -14,6 +15,8 @@ public class School {
     @OneToMany(
             mappedBy = "school"
     )
+    //@JsonManagedReference in the parent to fix infinite recursion 4:54
+    @JsonManagedReference
     private List<Student> students;
 
     public List<Student> getStudents() {

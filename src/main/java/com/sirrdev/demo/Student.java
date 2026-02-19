@@ -1,5 +1,6 @@
 package com.sirrdev.demo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -46,6 +47,8 @@ public class Student {
 
     @ManyToOne
     @JoinColumn(name = "school_id")
+    //@JsonBackReference in the in the child to fix infinite recursion 4:54
+    @JsonBackReference
     private School school;
 
     //this default constructor with no agrs is needed to transform this java class into an entity
