@@ -9,10 +9,12 @@ import java.util.List;
 public class StudentController {
 
     private final StudentRepository repository;
+    private final StudentMapper studentMapper;
 
-    //constructor injection
-    public StudentController(StudentRepository repository) {
+    //constructor injection: crucial for dependencies injection
+    public StudentController(StudentRepository repository, StudentMapper studentMapper) {
         this.repository = repository;
+        this.studentMapper = studentMapper;
     }
 
     @PostMapping("/students")
@@ -20,35 +22,12 @@ public class StudentController {
             //for the dto setting
             @RequestBody StudentDto dto
     ) {
-        var student = toStudent(dto);
+        var student = studentMapper.toStudent(dto);
        var savedStudent = repository.save(student);
        //the return itself : the object being converted
-       return toStudentResponseDto(savedStudent);
+       return studentMapper.toStudentResponseDto(savedStudent);
     }
 
-    //convert the student object to get the new final version wich is gonna be returned
-    private StudentResponseDto toStudentResponseDto(Student student) {
-        return new StudentResponseDto(
-                student.getFirstName(),
-                student.getLastName(),
-                student.getEmail()
-        );
-    }
-
-    //Transforming StudentDto object above into Student object using the following method
-    private Student toStudent(StudentDto dto) {
-        var student = new Student();
-        student.setFirstName(dto.firstName());
-        student.setLastName(dto.lastName());
-        student.setEmail(dto.email());
-
-        var school = new School();
-        school.setId(dto.schoolId());
-
-        student.setSchool((school));
-
-        return student;
-    }
 
     @GetMapping("/students")
     public List<Student> findAllStudent () {
